@@ -222,38 +222,6 @@ export default function Home() {
 </h1>
 {/* Song Cards */}
 
-<p className="text-red-600 text-xl">
-Search: {search}
-</p>
-
-<p className="text-blue-600 text-xl">
-Letter: {selectedLetter}
-</p>
-
-<p className="text-green-600 text-xl">
-  Total Songs: {Object.keys(songs).length}
-</p>
-
-<p className="text-purple-600 text-xl">
-  Results: {
-    Object.entries(songs)
-      .filter(([_, song]) => {
-        const query = search.trim().toLowerCase();
-
-        const matchesSearch =
-          !query ||
-          song.title?.toLowerCase().includes(query) ||
-          song.artist?.toLowerCase().includes(query);
-
-        const matchesLetter =
-          !selectedLetter ||
-          song.title?.startsWith(selectedLetter);
-
-        return matchesSearch && matchesLetter;
-      }).length
-  }
-</p>
-
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
            {Object.entries(songs)
   .filter(([_, song]) => {
