@@ -3,10 +3,10 @@ import { songs } from "@/app/data/app/data/songs";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
 
         {/* Sidebar */}
-        <aside className="w-64 bg-[#06152D] text-white min-h-screen p-6">
+      <aside className="hidden">
 
           {/* Logo Area */}
           <div className="h-32 border-b border-white/10 mb-6 flex items-center justify-center gap-4 px-2">
@@ -75,13 +75,24 @@ export default function Home() {
 
         </aside>
 
+{/* Mobile Header */}
+<div className="md:hidden bg-[#06152D] text-white p-4 flex items-center justify-between">
+  <h1 className="text-xl font-bold">
+    The Hymns Library
+  </h1>
+
+  <button className="bg-[#7A1024] px-3 py-2 rounded-lg">
+    ☰
+  </button>
+</div>
+
         {/* Main Content */}
         <div className="flex-1">
 
           {/* Header */}
           <header className="bg-[#7A1024] p-4">
 
-            <div className="flex items-center gap-4 justify-between">
+            <div className="flex flex-col md:flex-row gap-3">
 
               <div className="relative flex-1">
 
@@ -96,7 +107,7 @@ export default function Home() {
 
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex gap-2 overflow-x-auto pb-1">
 
                 <button className="bg-white text-black px-4 py-2 rounded-lg">
                   English
@@ -121,9 +132,9 @@ export default function Home() {
           </header>
 
           {/* Hero */}
-          <section className="p-10">
+          <section className="p-4 md:p-10">
 
-<div className="relative overflow-hidden rounded-2xl h-[430px] shadow-xl">
+<div className="relative overflow-hidden rounded-2xl h-[220px] md:h-[400px] shadow-xl">
 
   <Image
     src="/images/hero-image.jpg"
@@ -135,7 +146,7 @@ export default function Home() {
 
   <div className="absolute inset-0 bg-gradient-to-r from-white/15 via-white/0 to-transparent" />
 
-<div className="absolute left-10 bottom-2.5">
+<div className="absolute left-4 md:left-10 bottom-4">
 
   <a
     href="#browse-songs"
@@ -151,11 +162,11 @@ export default function Home() {
             {/* Browse Songs */}
             <div id="browse-songs" className="mt-16">
 
-              <h2 className="text-3xl font-bold mb-6 text-[#06152D]">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#06152D]">
                 Browse Songs
               </h2>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-6 md:flex md:flex-wrap gap-2">
 
                 {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
                   <button
@@ -171,7 +182,7 @@ export default function Home() {
             </div>
 
             {/* Filters */}
-            <div className="flex gap-3 mt-8 mb-6">
+            <div className="flex gap-2 overflow-x-auto mt-8 mb-6">
 
               <button className="bg-[#06152D] text-white px-4 py-2 rounded-lg">
                 Recently Added
@@ -184,7 +195,7 @@ export default function Home() {
             </div>
 
             {/* Song Cards */}
-           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
            {Object.entries(songs).map(([slug, song]) => (
   <a
     key={slug}
@@ -195,7 +206,7 @@ export default function Home() {
 
   <div>
 
-    <h3 className="font-bold text-xl text-white">
+   <h3 className="font-bold text-lg md:text-xl text-white">
       {(song as any).title}
     </h3>
 
@@ -233,19 +244,18 @@ export default function Home() {
 
           </section>
 
-          {/* Footer */}
-          <footer className="border-t py-8 text-center text-gray-600">
+         {/* Footer */}
+<footer className="border-t mt-12 py-8 text-center text-gray-600">
 
-            <p className="italic">
-              "Sing to the Lord a new song; sing to the Lord, all the earth."
-            </p>
+  <p className="italic text-sm md:text-base px-4">
+    "Sing to the Lord a new song; sing to the Lord, all the earth."
+  </p>
 
-            <p className="mt-2">
-              Psalm 96:1
-            </p>
+  <p className="mt-2">
+    Psalm 96:1
+  </p>
 
-          </footer>
-
+</footer>
         </div>
 
       </div>
