@@ -37,7 +37,7 @@ export default async function SongPage({
             {(song as any).title}
           </h1>
 
-          <p className="text-xl text-gray-200 mt-2">
+          <p className="text-base md:text-xltext-gray-200 mt-2">
             {(song as any).artist}
           </p>
 

@@ -6,7 +6,8 @@ import { songs } from "@/app/data/app/data/songs";
 
 export default function Home() {
   const [search, setSearch] = useState("");
-  return (
+  const [selectedLetter, setSelectedLetter] = useState("");
+     return (
     <main className="min-h-screen bg-white">
       <div className="flex flex-col md:flex-row">
 
@@ -140,17 +141,7 @@ export default function Home() {
 
           {/* Hero */}
           
-          <div className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 text-white max-w-md">
 
-  <h1 className="text-3xl md:text-6xl font-black">
-    The Hymns Library
-  </h1>
-
-  <p className="mt-3 text-sm md:text-xl">
-    Worship Songs • Chords • Lyrics
-  </p>
-
-</div>
           
           <section className="p-3 md:p-10">
 
@@ -165,6 +156,8 @@ export default function Home() {
   />
 
   <div className="absolute inset-0 bg-gradient-to-r from-white/15 via-white/0 to-transparent" />
+
+
 
 <div className="absolute left-4 md:left-10 bottom-4">
 
@@ -184,73 +177,98 @@ export default function Home() {
 
               <h2 className="text-xl md:text-3xl font-bold mb-6 text-[#06152D]">
                 Browse Songs
-              </h2>
+              </h2> </div>
 
               <div className="grid grid-cols-6 md:flex md:flex-wrap gap-2">
 
-                {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
-                 <button
-  key={letter}
-  className="px-3 py-2 bg-white border border-gray-300 text-[#06152D] rounded-md hover:bg-gray-100"
->
-                  
-                    {letter}
-                  </button>
-                ))}
+  <button
+    onClick={() => setSelectedLetter("")}
+    className="px-3 py-2 bg-[#7A1024] text-white rounded-md"
+  >
+    All
+  </button>
 
-              </div>
+  {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
+    <button
+      key={letter}
+      onClick={() => setSelectedLetter(letter)}
+      className={`px-3 py-2 rounded-md border ${
+        selectedLetter === letter
+          ? "bg-[#06152D] text-white"
+          : "bg-white text-[#06152D]"
+      }`}
+    >
+      {letter}
+    </button>
+  ))}
 
-            </div>
-
-            {/* Filters */}
-            <div className="flex gap-2 overflow-x-auto mt-8 mb-6">
-
-              <button className="bg-[#06152D] text-white px-4 py-2 rounded-lg">
-                Recently Added
-              </button>
-
-              <button className="bg-[#06152D] text-white px-4 py-2 rounded-lg">
-                Most Viewed
-              </button>
-
-            </div>
-
+</div>
+<p className="text-red-600 text-xl">
+  Total Songs: {Object.keys(songs).length}
+</p>
 <p className="text-gray-500 mb-4">
   {Object.keys(songs).length} Songs Available
 </p>
-<p className="mb-4 text-red-600 font-bold">
-  Search Value: {search}
-</p>
-           <p className="mb-4 text-red-600">
-  Search: {search}
+
+<p className="text-red-600 font-bold">
+  Search = {search}
 </p>
 
-<p className="mb-4 text-blue-600">
-  Songs Found: {
+<p className="text-blue-600 font-bold">
+  Letter = {selectedLetter}
+</p>
+<h1 className="text-6xl text-red-600">
+  TEST TEST TEST
+</h1>
+{/* Song Cards */}
+
+<p className="text-red-600 text-xl">
+Search: {search}
+</p>
+
+<p className="text-blue-600 text-xl">
+Letter: {selectedLetter}
+</p>
+
+<p className="text-green-600 text-xl">
+  Total Songs: {Object.keys(songs).length}
+</p>
+
+<p className="text-purple-600 text-xl">
+  Results: {
     Object.entries(songs)
       .filter(([_, song]) => {
         const query = search.trim().toLowerCase();
 
-        return (
+        const matchesSearch =
           !query ||
           song.title?.toLowerCase().includes(query) ||
-          song.artist?.toLowerCase().includes(query)
-        );
+          song.artist?.toLowerCase().includes(query);
+
+        const matchesLetter =
+          !selectedLetter ||
+          song.title?.startsWith(selectedLetter);
+
+        return matchesSearch && matchesLetter;
       }).length
   }
 </p>
 
-{/* Song Cards */}
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
            {Object.entries(songs)
   .filter(([_, song]) => {
   const query = search.trim().toLowerCase();
 
-  return (
+  const matchesSearch =
     !query ||
     song.title?.toLowerCase().includes(query) ||
-    song.artist?.toLowerCase().includes(query)
-  );
+    song.artist?.toLowerCase().includes(query);
+
+  const matchesLetter =
+    !selectedLetter ||
+    song.title?.startsWith(selectedLetter);
+
+  return matchesSearch && matchesLetter;
 })
   .map(([slug, song]) => (
   <a
