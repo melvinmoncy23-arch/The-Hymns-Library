@@ -203,23 +203,14 @@ export default function Home() {
   ))}
 
 </div>
-<p className="text-red-600 text-xl">
-  Total Songs: {Object.keys(songs).length}
-</p>
+
 <p className="text-gray-500 mb-4">
   {Object.keys(songs).length} Songs Available
 </p>
 
-<p className="text-red-600 font-bold">
-  Search = {search}
-</p>
 
-<p className="text-blue-600 font-bold">
-  Letter = {selectedLetter}
-</p>
-<h1 className="text-6xl text-red-600">
-  TEST TEST TEST
-</h1>
+
+
 {/* Song Cards */}
 
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
