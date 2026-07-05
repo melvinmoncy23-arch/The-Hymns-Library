@@ -1,12 +1,17 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { songs } from "@/app/data/app/data/songs";
+
 export default function Home() {
+  const [search, setSearch] = useState("");
   return (
     <main className="min-h-screen bg-white">
       <div className="flex flex-col md:flex-row">
 
         {/* Sidebar */}
-      <aside className="hidden">
+      <aside className="hidden lg:block w-64 bg-[#06152D] text-white min-h-screen p-6">
 
           {/* Logo Area */}
           <div className="h-32 border-b border-white/10 mb-6 flex items-center justify-center gap-4 px-2">
@@ -100,10 +105,12 @@ export default function Home() {
                   🔍
                 </span>
 
-                <input
-                  placeholder="Search songs, artists, lyrics..."
-                  className="w-full rounded-full pl-12 pr-6 py-3 bg-white shadow-md"
-                />
+               <input
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  placeholder="Search songs, artists..."
+  className="w-full rounded-full pl-12 pr-6 py-3 bg-white shadow-md"
+/>
 
               </div>
 
@@ -132,16 +139,29 @@ export default function Home() {
           </header>
 
           {/* Hero */}
-          <section className="p-4 md:p-10">
+          
+          <div className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 text-white max-w-md">
 
-<div className="relative overflow-hidden rounded-2xl h-[220px] md:h-[400px] shadow-xl">
+  <h1 className="text-3xl md:text-6xl font-black">
+    The Hymns Library
+  </h1>
+
+  <p className="mt-3 text-sm md:text-xl">
+    Worship Songs • Chords • Lyrics
+  </p>
+
+</div>
+          
+          <section className="p-3 md:p-10">
+
+<div className="relative overflow-hidden rounded-2xl aspect-[16/9] md:aspect-[21/9] shadow-xl">
 
   <Image
     src="/images/hero-image.jpg"
     alt="The Hymns Library"
     fill
     priority
-    className="object-cover"
+    className="object-cover object-center"
   />
 
   <div className="absolute inset-0 bg-gradient-to-r from-white/15 via-white/0 to-transparent" />
@@ -150,7 +170,7 @@ export default function Home() {
 
   <a
     href="#browse-songs"
-    className="inline-block bg-[#7A1024] text-white px-6 py-3 rounded-lg hover:opacity-90"
+    className="inline-block bg-[#7A1024] text-white px-4 py-2 md:px-6 md:py-3 rounded-lg hover:opacity-90"
   >
     Browse Songs
   </a>
@@ -162,17 +182,18 @@ export default function Home() {
             {/* Browse Songs */}
             <div id="browse-songs" className="mt-16">
 
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#06152D]">
+              <h2 className="text-xl md:text-3xl font-bold mb-6 text-[#06152D]">
                 Browse Songs
               </h2>
 
               <div className="grid grid-cols-6 md:flex md:flex-wrap gap-2">
 
                 {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
-                  <button
-                    key={letter}
-                    className="px-3 py-2 bg-gray-100 rounded-md hover:bg-gray-200"
-                  >
+                 <button
+  key={letter}
+  className="px-3 py-2 bg-white border border-gray-300 text-[#06152D] rounded-md hover:bg-gray-100"
+>
+                  
                     {letter}
                   </button>
                 ))}
@@ -194,13 +215,48 @@ export default function Home() {
 
             </div>
 
-            {/* Song Cards */}
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-           {Object.entries(songs).map(([slug, song]) => (
+<p className="text-gray-500 mb-4">
+  {Object.keys(songs).length} Songs Available
+</p>
+<p className="mb-4 text-red-600 font-bold">
+  Search Value: {search}
+</p>
+           <p className="mb-4 text-red-600">
+  Search: {search}
+</p>
+
+<p className="mb-4 text-blue-600">
+  Songs Found: {
+    Object.entries(songs)
+      .filter(([_, song]) => {
+        const query = search.trim().toLowerCase();
+
+        return (
+          !query ||
+          song.title?.toLowerCase().includes(query) ||
+          song.artist?.toLowerCase().includes(query)
+        );
+      }).length
+  }
+</p>
+
+{/* Song Cards */}
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+           {Object.entries(songs)
+  .filter(([_, song]) => {
+  const query = search.trim().toLowerCase();
+
+  return (
+    !query ||
+    song.title?.toLowerCase().includes(query) ||
+    song.artist?.toLowerCase().includes(query)
+  );
+})
+  .map(([slug, song]) => (
   <a
     key={slug}
     href={`/songs/${slug}`}
-  className="block bg-[#06152D] text-white rounded-xl p-5 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-t-4 border-[#7A1024]"
+  className="block bg-[#06152D] text-white rounded-xl p-4 md:p-3 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-t-4 border-[#7A1024]"
   >
    <div className="flex justify-between items-start">
 
@@ -251,9 +307,9 @@ export default function Home() {
     "Sing to the Lord a new song; sing to the Lord, all the earth."
   </p>
 
-  <p className="mt-2">
-    Psalm 96:1
-  </p>
+  <p className="mt-2 text-[#7A1024] font-semibold">
+  Psalm 96:1
+</p>
 
 </footer>
         </div>
