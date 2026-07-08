@@ -17,14 +17,14 @@ export default function Home() {
           {/* Logo Area */}
           <div className="h-32 border-b border-white/10 mb-6 flex items-center justify-center gap-4 px-2">
 
-            <Image
-              src="/images/hebron-logo.png"
-              alt="Hebron AG"
-              width={70}
-              height={70}
-              className="object-contain"
-              priority
-            />
+           <Image
+  src="/images/hero-image.jpg"
+  alt="The Hymns Library"
+  fill
+  priority
+  className="object-cover object-center"
+/>
+
 
             <div className="w-px h-16 bg-yellow-500"></div>
 
@@ -147,13 +147,14 @@ export default function Home() {
 
 <div className="relative overflow-hidden rounded-2xl aspect-[16/9] md:aspect-[21/9] shadow-xl">
 
-  <Image
-    src="/images/hero-image.jpg"
-    alt="The Hymns Library"
-    fill
-    priority
-    className="object-cover object-center"
-  />
+ <Image
+  src="/images/ag-logo.png"
+  alt="AG"
+  width={70}
+  height={70}
+  className="object-contain h-auto w-auto"
+  priority
+/>
 
   <div className="absolute inset-0 bg-gradient-to-r from-white/15 via-white/0 to-transparent" />
 
