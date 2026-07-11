@@ -7,7 +7,8 @@ import { songs } from "@/app/data/app/data/songs";
 export default function Home() {
   const [search, setSearch] = useState("");
   const [selectedLetter, setSelectedLetter] = useState("");
-     return (
+  const [selectedLanguage, setSelectedLanguage] = useState("");   
+  return (
     <main className="min-h-screen bg-white">
       <div className="flex flex-col md:flex-row">
 
@@ -16,16 +17,6 @@ export default function Home() {
 
           {/* Logo Area */}
           <div className="h-32 border-b border-white/10 mb-6 flex items-center justify-center gap-4 px-2">
-
-           <Image
-  src="/images/hero-image.jpg"
-  alt="The Hymns Library"
-  fill
-  priority
-  className="object-cover object-center"
-/>
-
-
             <div className="w-px h-16 bg-yellow-500"></div>
 
             <Image
@@ -39,7 +30,7 @@ export default function Home() {
 
           </div>
 
-          <h1 className="text-3xl font-bold">
+         <h1 className="text-4xl font-bold leading-tight">
             The Hymns Library
           </h1>
 
@@ -117,21 +108,58 @@ export default function Home() {
 
               <div className="flex gap-2 overflow-x-auto pb-1">
 
-                <button className="bg-white text-black px-4 py-2 rounded-lg">
-                  English
-                </button>
+<button
+  onClick={() => setSelectedLanguage("")}
+  className={`px-4 py-2 rounded-lg ${
+    selectedLanguage === ""
+      ? "bg-white text-black"
+      : "border border-white text-white"
+  }`}
+>
+  All
+</button>
 
-                <button className="border border-white text-white px-4 py-2 rounded-lg">
-                  Malayalam
-                </button>
+               <button
+  onClick={() => setSelectedLanguage("English")}
+  className={`px-4 py-2 rounded-lg ${
+    selectedLanguage === "English"
+      ? "bg-white text-black"
+      : "border border-white text-white"
+  }`}
+>
+  English
+</button>
 
-                <button className="border border-white text-white px-4 py-2 rounded-lg">
-                  Tamil
-                </button>
-
-                <button className="border border-white text-white px-4 py-2 rounded-lg">
-                  Hindi
-                </button>
+               <button
+  onClick={() => setSelectedLanguage("Malayalam")}
+  className={`px-4 py-2 rounded-lg ${
+    selectedLanguage === "Malayalam"
+      ? "bg-white text-black"
+      : "border border-white text-white"
+  }`}
+>
+  Malayalam
+</button>
+<button
+  onClick={() => setSelectedLanguage("Tamil")}
+  className={`px-4 py-2 rounded-lg ${
+    selectedLanguage === "Tamil"
+      ? "bg-white text-black"
+      : "border border-white text-white"
+  }`}
+>
+  Tamil
+</button>
+<button
+  onClick={() => setSelectedLanguage("Hindi")}
+  className={`px-4 py-2 rounded-lg ${
+    selectedLanguage === "Hindi"
+      ? "bg-white text-black"
+      : "border border-white text-white"
+  }`}
+>
+  Hindi
+</button>
 
               </div>
 
@@ -142,18 +170,15 @@ export default function Home() {
           {/* Hero */}
           
 
-          
-          <section className="p-3 md:p-10">
+         <section className="p-6 md:p-10">
 
-<div className="relative overflow-hidden rounded-2xl aspect-[16/9] md:aspect-[21/9] shadow-xl">
-
- <Image
-  src="/images/ag-logo.png"
-  alt="AG"
-  width={70}
-  height={70}
-  className="object-contain h-auto w-auto"
+<div className="relative overflow-hidden rounded-2xl h-[250px] md:h-[350px] shadow-xl">
+<Image
+  src="/images/hero-image.jpg"
+  alt="The Hymns Library"
+  fill
   priority
+  className="object-cover"
 />
 
   <div className="absolute inset-0 bg-gradient-to-r from-white/15 via-white/0 to-transparent" />
@@ -220,21 +245,26 @@ export default function Home() {
   const query = search.trim().toLowerCase();
 
   const matchesSearch =
-    !query ||
-    song.title?.toLowerCase().includes(query) ||
-    song.artist?.toLowerCase().includes(query);
+  !query ||
+  song.title?.toLowerCase().includes(query) ||
+  song.artist?.toLowerCase().includes(query);
 
-  const matchesLetter =
-    !selectedLetter ||
-    song.title?.startsWith(selectedLetter);
+const matchesLetter =
+  !selectedLetter ||
+  song.title?.startsWith(selectedLetter);
 
-  return matchesSearch && matchesLetter;
+const matchesLanguage =
+  !selectedLanguage ||
+  song.language === selectedLanguage;
+
+return matchesSearch && matchesLetter && matchesLanguage;
 })
+
   .map(([slug, song]) => (
   <a
     key={slug}
     href={`/songs/${slug}`}
-  className="block bg-[#06152D] text-white rounded-xl p-4 md:p-3 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-t-4 border-[#7A1024]"
+  className="block bg-[#0A1E3F] text-white rounded-xl p-4 md:p-3 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-t-4 border-[#7A1024]"
   >
    <div className="flex justify-between items-start">
 
