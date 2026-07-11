@@ -87,7 +87,7 @@ export default function Home() {
         <div className="flex-1">
 
           {/* Header */}
-          <header className="bg-[#7A1024] p-4">
+          <header className="bg-[#7A1024] px-4 py-5">
 
             <div className="flex flex-col md:flex-row gap-3">
 
@@ -106,63 +106,27 @@ export default function Home() {
 
               </div>
 
-              <div className="flex gap-2 overflow-x-auto pb-1">
+<div className="flex flex-wrap gap-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-2">
 
-<button
-  onClick={() => setSelectedLanguage("")}
-  className={`px-4 py-2 rounded-lg ${
-    selectedLanguage === ""
-      ? "bg-white text-black"
-      : "border border-white text-white"
-  }`}
->
-  All
-</button>
+  {["", "English", "Malayalam", "Tamil", "Hindi"].map((lang) => (
 
-               <button
-  onClick={() => setSelectedLanguage("English")}
-  className={`px-4 py-2 rounded-lg ${
-    selectedLanguage === "English"
-      ? "bg-white text-black"
-      : "border border-white text-white"
-  }`}
->
-  English
-</button>
+    <button
+      key={lang || "all"}
+      onClick={() => setSelectedLanguage(lang)}
+     className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300
 
-               <button
-  onClick={() => setSelectedLanguage("Malayalam")}
-  className={`px-4 py-2 rounded-lg ${
-    selectedLanguage === "Malayalam"
-      ? "bg-white text-black"
-      : "border border-white text-white"
-  }`}
->
-  Malayalam
-</button>
-<button
-  onClick={() => setSelectedLanguage("Tamil")}
-  className={`px-4 py-2 rounded-lg ${
-    selectedLanguage === "Tamil"
-      ? "bg-white text-black"
-      : "border border-white text-white"
-  }`}
->
-  Tamil
-</button>
-<button
-  onClick={() => setSelectedLanguage("Hindi")}
-  className={`px-4 py-2 rounded-lg ${
-    selectedLanguage === "Hindi"
-      ? "bg-white text-black"
-      : "border border-white text-white"
-  }`}
->
-  Hindi
-</button>
+      ${
+        selectedLanguage === lang
+  ? "bg-white/20 backdrop-blur-xl border border-white/30 text-white shadow-[0_8px_32px_rgba(255,255,255,0.15)]"
+  : "bg-white/5 backdrop-blur-xl border border-white/10 text-white/90 hover:bg-white/15 hover:border-white/30 hover:shadow-[0_8px_32px_rgba(255,255,255,0.1)] hover:scale-105"
+      }`}
+    >
+      {lang || "All"}
+    </button>
 
-              </div>
+  ))}
 
+</div>
             </div>
 
           </header>

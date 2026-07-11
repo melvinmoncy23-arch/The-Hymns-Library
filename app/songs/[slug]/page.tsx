@@ -57,22 +57,53 @@ export default async function SongPage({
 
           </div>
 
-          <div className="mt-8">
+          
 
-            <a
-              href={(song as any).pdf}
-              download
-              className="inline-block bg-[#06152D] text-white px-6 py-3 rounded-lg hover:opacity-90"
-            >
-              Download PDF
-            </a>
+       </div>
+</div>
 
-          </div>
+{/* Toolbar */}
+<div className="max-w-6xl mx-auto px-10 mt-6">
 
-        </div>
-      </div>
+  <div className="flex flex-wrap gap-3 bg-white border rounded-2xl p-3 shadow-sm">
 
-      {/* Chord Sheet */}
+    <button className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition">
+      A-
+    </button>
+
+    <button className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition">
+      A+
+    </button>
+
+    <button className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition">
+      −
+    </button>
+
+    <div className="px-5 py-2 rounded-full bg-[#7A1024] text-white font-semibold">
+      KEY: {(song as any).key}
+    </div>
+
+    <button className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition">
+      +
+    </button>
+
+    <button className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition">
+      Stage Mode
+    </button>
+
+    <a
+      href={(song as any).pdf}
+      download
+      className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition"
+    >
+      PDF
+    </a>
+
+  </div>
+
+</div>
+
+{/* Chord Sheet */}
       <div className="max-w-6xl mx-auto p-10">
 
         <div className="border rounded-xl p-8 bg-gray-50 shadow-sm">
