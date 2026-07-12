@@ -65,13 +65,13 @@ export default async function SongPage({
 {/* Toolbar */}
 <div className="max-w-6xl mx-auto px-6 md:px-10 mt-6">
 
-  <div className="flex flex-wrap items-center gap-3 bg-white/70 backdrop-blur-xl border border-white/30 rounded-2xl p-4 shadow-lg">
+<div className="flex flex-wrap items-center gap-3 bg-white/80 backdrop-blur-xl border border-gray-200 rounded-2xl p-4 shadow-xl">
 
-    <button className="px-5 py-2.5 rounded-full bg-[#06152D]/95 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg">
+    <button className="px-5 py-2.5 rounded-full bg-[#06152D] text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-[#0A2A57]">
       A-
     </button>
 
-    <button className="px-5 py-2.5 rounded-full bg-[#06152D]/95 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg">
+    <button className="px-5 py-2.5 rounded-full bg-[#06152D] text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-[#0A2A57]">
       A+
     </button>
 
@@ -94,7 +94,7 @@ export default async function SongPage({
     <a
       href={(song as any).pdf}
       download
-      className="px-5 py-2.5 rounded-full bg-[#06152D]/95 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+      className="px-5 py-2.5 rounded-full bg-[#06152D] text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl hover:bg-[#0A2A57]"
     >
       PDF
     </a>
