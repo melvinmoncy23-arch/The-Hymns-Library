@@ -63,38 +63,38 @@ export default async function SongPage({
 </div>
 
 {/* Toolbar */}
-<div className="max-w-6xl mx-auto px-10 mt-6">
+<div className="max-w-6xl mx-auto px-6 md:px-10 mt-6">
 
-  <div className="flex flex-wrap gap-3 bg-white border rounded-2xl p-3 shadow-sm">
+  <div className="flex flex-wrap items-center gap-3 bg-white/70 backdrop-blur-xl border border-white/30 rounded-2xl p-4 shadow-lg">
 
-    <button className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition">
+    <button className="px-5 py-2.5 rounded-full bg-[#06152D]/95 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg">
       A-
     </button>
 
-    <button className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition">
+    <button className="px-5 py-2.5 rounded-full bg-[#06152D]/95 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg">
       A+
     </button>
 
-    <button className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition">
+    <button className="px-5 py-2.5 rounded-full bg-[#06152D]/95 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg">
       −
     </button>
 
-    <div className="px-5 py-2 rounded-full bg-[#7A1024] text-white font-semibold">
+    <div className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#7A1024] to-[#9e1b32] text-white font-semibold shadow-lg">
       KEY: {(song as any).key}
     </div>
 
-    <button className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition">
+    <button className="px-5 py-2.5 rounded-full bg-[#06152D]/95 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg">
       +
     </button>
 
-    <button className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition">
+    <button className="px-5 py-2.5 rounded-full bg-[#06152D]/95 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg">
       Stage Mode
     </button>
 
     <a
       href={(song as any).pdf}
       download
-      className="px-4 py-2 rounded-full bg-[#06152D] text-white hover:scale-105 transition"
+      className="px-5 py-2.5 rounded-full bg-[#06152D]/95 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
     >
       PDF
     </a>
@@ -106,7 +106,7 @@ export default async function SongPage({
 {/* Chord Sheet */}
       <div className="max-w-6xl mx-auto p-10">
 
-        <div className="border rounded-xl p-8 bg-gray-50 shadow-sm">
+        <div className="border rounded-xl p-8 bg-g   ray-50 shadow-sm">
 
           <h2 className="text-2xl font-bold text-[#06152D] mb-6">
             Chord Sheet
