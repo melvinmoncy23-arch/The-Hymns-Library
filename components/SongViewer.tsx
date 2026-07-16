@@ -36,18 +36,20 @@ function transposeChord(chord: string, steps: number) {
 
   return newRoot + suffix;
 }
-
-export default function SongViewer({
+export default function SongViewer ({
   chords,
   songKey,
   pdf,
+  slug,
 }: {
   chords: string;
   songKey: string;
   pdf: string;
+  slug: string;
 }) {
-  const [fontSize, setFontSize] = useState(18);
-  const [stageMode, setStageMode] = useState(false);
+   const [fontSize, setFontSize] = useState(18);
+  const [isFavorite, setIsFavorite] = useState(false);
+   const [stageMode, setStageMode] = useState(false);
 
   const [currentKey, setCurrentKey] = useState(songKey);
 
@@ -58,6 +60,14 @@ export default function SongViewer({
   const [scrollSpeed, setScrollSpeed] = useState(1);
 
   const scrollRef = useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  const favorites = JSON.parse(
+    localStorage.getItem("favorites") || "[]"
+  );
+
+  setIsFavorite(favorites.includes(slug));
+}, [slug]);
 
   useEffect(() => {
     if (!autoScroll) return;
@@ -99,6 +109,29 @@ const transposeDown = () => {
     NOTES[(index - 1 + NOTES.length) % NOTES.length];
 
   setCurrentKey(currentKey.replace(root, next));
+};
+
+const toggleFavorite = () => {
+  const favorites = JSON.parse(
+    localStorage.getItem("favorites") || "[]"
+  );
+
+  let updated;
+
+  if (favorites.includes(slug)) {
+    updated = favorites.filter(
+      (item: string) => item !== slug
+    );
+  } else {
+    updated = [...favorites, slug];
+  }
+
+  localStorage.setItem(
+    "favorites",
+    JSON.stringify(updated)
+  );
+
+  setIsFavorite(!isFavorite);
 };
 
   return (
@@ -191,7 +224,16 @@ const transposeDown = () => {
           >
             📄 PDF
           </a>
-
+<button
+  onClick={toggleFavorite}
+  className={`px-5 py-2.5 rounded-full text-white hover:scale-105 transition-all ${
+    isFavorite
+      ? "bg-gradient-to-r from-[#7A1024] to-[#9e1b32]"
+      : "bg-[#06152D]"
+  }`}
+>
+  {isFavorite ? "❤️ Saved" : "🤍 Favorite"}
+</button>
         </div>
 
       </div>

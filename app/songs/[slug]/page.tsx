@@ -65,6 +65,7 @@ export default async function SongPage({
   chords={(song as any).chords}
   songKey={(song as any).key}
   pdf={(song as any).pdf}
+  slug={slug}
 />
 
     </main>
