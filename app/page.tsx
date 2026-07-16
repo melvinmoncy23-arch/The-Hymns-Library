@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { songs } from "@/app/data/app/data/songs";
 
 export default function Home() {
@@ -48,17 +49,26 @@ export default function Home() {
               Songs
             </div>
 
-            <div className="hover:bg-white/10 rounded-lg px-4 py-3 cursor-pointer">
-              Favorites
-            </div>
+           <Link
+  href="/favorites"
+  className="block hover:bg-white/10 rounded-lg px-4 py-3"
+>
+  Favorites
+</Link>
 
-            <div className="hover:bg-white/10 rounded-lg px-4 py-3 cursor-pointer">
-              Recently Viewed
-            </div>
+          <Link
+  href="/recent"
+  className="block hover:bg-white/10 rounded-lg px-4 py-3"
+>
+  Recently Viewed
+</Link>
 
-            <div className="hover:bg-white/10 rounded-lg px-4 py-3 cursor-pointer">
-              Setlists
-            </div>
+ <Link
+  href="/setlists"
+  className="block hover:bg-white/10 rounded-lg px-4 py-3"
+>
+  Setlists
+</Link>
 
             <div className="hover:bg-white/10 rounded-lg px-4 py-3 cursor-pointer">
               Song Requests

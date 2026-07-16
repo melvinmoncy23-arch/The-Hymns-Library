@@ -60,13 +60,28 @@ export default function SongViewer ({
   const [scrollSpeed, setScrollSpeed] = useState(1);
 
   const scrollRef = useRef<HTMLDivElement>(null);
-
 useEffect(() => {
   const favorites = JSON.parse(
     localStorage.getItem("favorites") || "[]"
   );
 
   setIsFavorite(favorites.includes(slug));
+}, [slug]);
+
+useEffect(() => {
+  const recent = JSON.parse(
+    localStorage.getItem("recentSongs") || "[]"
+  );
+
+  const updated = [
+    slug,
+    ...recent.filter((item: string) => item !== slug),
+  ].slice(0, 10);
+
+  localStorage.setItem(
+    "recentSongs",
+    JSON.stringify(updated)
+  );
 }, [slug]);
 
   useEffect(() => {
