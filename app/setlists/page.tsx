@@ -54,14 +54,49 @@ export default function SetlistsPage() {
       </div>
 
       <div className="space-y-4">
-        {setlists.map((setlist) => (
-          <div
-            key={setlist}
-            className="border rounded-xl p-5"
-          >
-            📋 {setlist}
-          </div>
-        ))}
+{setlists.map((setlist) => (
+
+  <div
+    key={setlist}
+    className="border rounded-xl p-5 flex items-center justify-between"
+  >
+
+    <div className="font-semibold text-lg">
+      📋 {setlist}
+    </div>
+
+    <div className="flex gap-3">
+
+     <a
+  href={`/setlists/${encodeURIComponent(setlist)}`}
+  className="bg-[#06152D] text-white px-4 py-2 rounded-lg"
+>
+  Open
+</a>
+
+      <button
+        onClick={() => {
+          const updated = setlists.filter(
+            (item) => item !== setlist
+          );
+
+          setSetlists(updated);
+
+          localStorage.setItem(
+            "setlists",
+            JSON.stringify(updated)
+          );
+        }}
+        className="bg-red-600 text-white px-4 py-2 rounded-lg"
+      >
+        Delete
+      </button>
+
+    </div>
+
+  </div>
+
+))}
       </div>
     </main>
   );

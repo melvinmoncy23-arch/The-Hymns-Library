@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.hero-title {
+  font-family: var(--font-playfair);
+}
+
+.body-font {
+  font-family: var(--font-inter);
+}
