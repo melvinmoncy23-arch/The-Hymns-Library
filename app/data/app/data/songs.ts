@@ -386,4 +386,161 @@ D                        G      D   A         D
 All to thee, my blessed Savior, I surrender all
 `,
   },
+
+  "parishudhan-mahonnatha-devan": {
+    title: "Parishudhan Mahonnatha Devan",
+    tag: "Traditional Song",
+    artist: "-",
+    key: "G",
+    capo: "None",
+    language: "Malayalam",
+    pdf: "/pdfs/parishudhan-mahonnatha-devan.pdf",
+
+    chords: `
+[Verse 1]
+G           C       G
+Parishudhan mahonnatha devan
+
+G           Bm      C
+Paramengum vilangum maheshan
+
+Am                  C
+Swargeeya sainyangal vazhthi
+
+D
+sthuthikkunna
+
+D           D7      G
+Swarloka nadhanaam mishiha
+
+[Chorus]
+G           C       D
+Ha ha ha hallelujah
+
+D           G       D/F#    Em
+Ha ha ha hallelujah
+
+Em          Am      D
+Ha ha ha hallelujah
+
+D7          G
+Ha ha ha hallelujah
+
+G           C       D
+Ha ha ha hallelujah
+
+D           G       D/F#    Em
+Ha ha ha hallelujah
+
+Em          Am      D
+Ha ha ha hallelujah
+
+D7          G
+Ha ha ha Amen
+
+[Verse 2]
+G           C       G
+Avan athbhutha manthriyaam daivam
+
+G           Bm      C
+Nithya thathanum veeranaam daivam
+
+Am          C       D
+Unnatha devan neethiyin sooryan
+
+D           D7      G
+Rajadhi raajanam mishiha
+
+[Verse 3]
+G           C       G
+Koda kodi than dootha sainyavumayi
+
+G           Bm      C
+Megha roodhanayi varunnitha viravil
+
+Am          C       D
+Than priya suthare thannodu cherppan
+
+D           D7      G
+Vegam varunneshu mishiha
+
+[Chorus]
+G           C       D
+Ha ha ha hallelujah
+
+D           G       D/F#    Em
+Ha ha ha hallelujah
+
+Em          Am      D
+Ha ha ha hallelujah
+
+D7          G
+Ha ha ha Amen
+`,
+  },
+
+  "aaradhyane-samaradhyane": {
+    title: "Aaradhyane Samaradhyane",
+    tag: "Worship Song",
+    artist: "-",
+    key: "E",
+    capo: "None",
+    language: "Malayalam",
+    pdf: "/pdfs/aaradhyane-samaradhyane.pdf",
+
+    chords: `
+[Chorus]
+E           C#m
+Aaradhyane samaradhyane
+
+F#m         B
+Aarilum unnathan aayavane
+
+F#m         D
+Aaradhikkunnitha ninne njangal
+
+B       A       E
+Aayussin naalkal ellam
+
+[Verse 1]
+E               Abm
+Ente rogakkidakkayathil
+
+A               F#m
+Ente saukhya pradhayakane
+
+B               Abm
+Ente paapa samhaarakane
+
+A           B
+Ente sanketham nee maathrame
+
+[Verse 2]
+E
+Ente vedhanaayil aaswasam
+
+A
+Ninte santhwanam ennumennum
+
+A           G#m
+Ente rekshakanam Yeshuve
+
+A           B
+Ente sarvavum nee maathrame
+
+[Chorus]
+E           C#m
+Aaradhyane samaradhyane
+
+F#m         B
+Aarilum unnathan aayavane
+
+F#m         D
+Aaradhikkunnitha ninne njangal
+
+B       A       E
+Aayussin naalkal ellam
+`,
+  },
+
 };
