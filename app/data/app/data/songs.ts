@@ -481,7 +481,7 @@ Ha ha ha Amen
 
   "aaradhyane-samaradhyane": {
     title: "Aaradhyane Samaradhyane",
-    tag: "Worship Song",
+    tag: "Praise, Worship Song",
     artist: "-",
     key: "E",
     capo: "None",
